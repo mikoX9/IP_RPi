@@ -1,6 +1,5 @@
-from tkinter.font import ROMAN
 from gpiozero import RotaryEncoder
-from gpiozero import Motor
+from gpiozero import PWMLED
 
 from time import sleep
 
@@ -20,14 +19,26 @@ L_ENC_B = 7
 
 
 class own_motor():
+    def __init__(self, A, B, PWM):
+        self.A = A
+        self.B = B
+        self.PWM = PWMLED(PWM)
+
+
+
+    
+
+class platform():
     def __init__(self):
         pass
 
+    r_encoder = None
+    l_encoder = None
 
-def platform_init():
 
-    r_encoder = RotaryEncoder(R_ENC_A, R_ENC_B)
-    l_encoder = RotaryEncoder(L_ENC_A, L_ENC_B)    
+    def platform_init(self):
+        self.r_encoder = RotaryEncoder(R_ENC_A, R_ENC_B)
+        self.l_encoder = RotaryEncoder(L_ENC_A, L_ENC_B)    
 
 
 
