@@ -47,7 +47,6 @@ class platform():
 
 rotor = RotaryEncoder(2, 3)
 
-
 while True:
-    print(f"{rotor.values}")
+    print(f"{rotor.steps}")
     sleep(1)
