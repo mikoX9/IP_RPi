@@ -1,5 +1,6 @@
 from gpiozero import RotaryEncoder
 from gpiozero import PWMLED
+from gpiozero import LED
 
 from time import sleep
 
@@ -20,12 +21,14 @@ L_ENC_B = 7
 
 class own_motor():
     def __init__(self, A, B, PWM):
-        self.A = A
-        self.B = B
-        self.PWM = PWMLED(PWM)
+        self.in_a = LED(A)
+        self.in_b = LED(B)
+        self.pwm = PWMLED(PWM)
 
-
-
+    def forward(self, prec):
+        self.in_a.on()
+        self.in_b.on()
+        self.pwm.value(prec)
     
 
 class platform():
@@ -45,8 +48,15 @@ class platform():
 
 
 
-rotor = RotaryEncoder(2, 3)
+# rotor = RotaryEncoder(2, 3)
+
+r_motor = own_motor(IN1, IN2, ENA)
 
 while True:
-    print(f"{rotor.steps}")
+    # print(f"{rotor.steps}")
+    # sleep(1)
+    r_motor.forward(1.0)
     sleep(1)
+
+
+
