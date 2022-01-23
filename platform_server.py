@@ -2,9 +2,9 @@ import socket
 import threading
 from time import sleep
 
-HEADER = 64
+MSG_LENGHT = 64
 PORT = 5050
-# SERVER = socket.gethostbyname( socket.gethostname() )
+#SERVER = socket.gethostbyname( socket.gethostname() )
 SERVER = "192.168.0.101"
 ADDR = (SERVER, PORT)
 FORMAT = "utf-8"
@@ -20,7 +20,7 @@ def handle_client(conn, addr):
 
     connected = True
     while connected:
-        msg = conn.recv(HEADER).decode(FORMAT)
+        msg = conn.recv(MSG_LENGHT).decode(FORMAT)
         print(f"[{addr}] {msg}\n\r")   
         if msg == DISCONNECT_MESSAGE:
             connected = False
@@ -28,10 +28,10 @@ def handle_client(conn, addr):
 
         sleep(1)
         
-        # msg_length = conn.recv(HEADER).decode(FORMAT)
+        # msg_length = conn.recv(MSG_LENGHT).decode(FORMAT)
         # if msg_length:
         #     msg_length = int(msg_length)
-        #     msg = conn.recv(HEADER).decode(FORMAT)
+        #     msg = conn.recv(MSG_LENGHT).decode(FORMAT)
         #     if msg == DISCONNECT_MESSAGE:
         #         connected = False
         #     print(f"[{addr}] {msg}")   
