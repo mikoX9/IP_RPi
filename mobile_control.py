@@ -18,6 +18,8 @@ R_ENC_B = 0
 L_ENC_A = 1
 L_ENC_B = 7
 
+encoder_states = [0,0]
+
 
 class own_motor():
     def __init__(self, A, B, PWM):
@@ -50,8 +52,8 @@ class platform():
         self.l_motor = own_motor(IN1, IN2, ENA)
         self.r_motor = own_motor(IN4, IN3, ENB)
 
-        # self.r_encoder = RotaryEncoder(R_ENC_A, R_ENC_B)
-        # self.l_encoder = RotaryEncoder(L_ENC_A, L_ENC_B)    
+        #self.r_encoder = RotaryEncoder(R_ENC_A, R_ENC_B)
+        self.l_encoder = RotaryEncoder(L_ENC_A, L_ENC_B, max_steps=1000)    
 
         self.l_speed = 0.0
         self.r_speed = 0.0
