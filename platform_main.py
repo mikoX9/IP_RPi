@@ -6,9 +6,6 @@ import platform_server
 import threading
 
 state_machine.curr_state = STOP
-# print(state_machine.curr_state)
-# platform_server.change_state()
-# print(state_machine.curr_state)
 
 
 server_thread = threading.Thread(target=platform_server.start)
